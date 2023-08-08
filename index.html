@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <link data-require="bootstrap@4.0.5" data-semver="4.0.5" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://kit.fontawesome.com/fa391ed511.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div class="container">
+        <hr>
+    <h4>Angular 2 QuickStart</h4>
+    <button class="btn btn-info">Current User: Viethungtran.0412@gmail. com</button><br>
+    <button type="button" class="btn btn-info" data-toggle="modal"
+    data-target="#myModal" style="background-color: rgb(14, 184, 71);">Add Product
+    </button>
+    <span class="clearfix"></span>
+    <div class="alert alert-success alert-dismissable" ng-if="message">
+        <a href="#" class="close" ng-click="clearMessage()">x</a>
+        <strong>{{message}}</strong>
+    </div>
+    <div class="table-responsive border border-2 border-primary rounded-2" style="margin-top: 18px;">
+        <table class="table table-striped table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Product Name</th>
+                    <th>Product File</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users">
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                        data-target="#myModalEdit" ng-click="selectUser(user)">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        </button>
+                         <button type="button" class="btn btn-warning btn-sm trash" data-toggle="modal"
+                        data-target="#myModalDelete" ng-click="deleteUser(user)">
+                        <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.price | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    <div class="modal fade" id="myModalEdit" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Product</h4>
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label"><strong>Product Name</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" ng-model="clickedUser.name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"><strong>Product Price</strong></label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" ng-model="clickedUser.price">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default" ng-click="editUser()" data-dismiss="modal">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Product</h4>
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Product Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" ng-model="newUser.name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Product Price</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" ng-model="newUser.price">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success" ng-click="addUser()" data-dismiss="modal">
+                                    Add User
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>
